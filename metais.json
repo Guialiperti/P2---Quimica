@@ -1,108 +1,140 @@
 {
     "1":{
-        "nome": "Cu",
-        "id": 1,
-        "semireacao":"Cu2+ -> Cu",
-        "eletrons": 2,
-        "E":0.34,
-        "solucao": "CuSO4",
-        "Msol": 159.6106,
-        "M": 63.546
-    },
-   "2":{
-       "nome": "Fe2",
-       "id": 2,
-        "semireacao":"Fe2+ -> Fe",
-        "eletrons": 2,
-        "E":-0.44,
-        "solucao": "FeSO4",
-        "Msol": 151.9096,
-        "M": 55.845
-        },
-
-    "3":{
         "nome": "Zn",
-        "id": 3,
-        "semireacao":"Zn2+ -> Zn",
+        "id": 1,
         "eletrons": 2,
         "E":-0.763,
         "solucao": "ZnSO4",
         "Msol": 161.4446,
-        "M": 65.38
-        },
-
+        "M": 65.38,
+        "precoM": 0.160,
+        "precoS": 0.160
+        }, 
+    "2":{
+        "nome" : "Hg",
+        "id": 2,
+        "eletrons": 2,
+        "E": 0.851,
+        "solucao": "Hg(NO3)2",
+        "Msol": 100,
+        "M": 200.59,
+        "precoM": 2.0,
+        "precoS": 16.6544
+      },
+    "3":{
+        "nome": "Cu",
+        "id": 3,
+        "eletrons": 2,
+        "E":0.34,
+        "solucao": "CuSO4",
+        "Msol": 159.6106,
+        "M": 63.546,
+        "precoM":0.018,
+        "precoS":0.020
+    },
     "4":{
         "nome": "Ni",
         "id": 4,
-        "semireacao":"Ni2+ -> Ni",
         "eletrons": 2,
         "E":-0.23,
         "solucao": "NiSO4",
         "Msol": 154.758,
-        "M": 58.6934
+        "M": 58.6934,
+        "precoM": 0.395,
+        "precoS": 0.049
         },
+
     "5":{
         "nome": "Pb",
         "id": 5,
-        "semireacao":"Cu2+ -> Sr",
         "eletrons": 2,
         "E":-0.13,
         "solucao": "Pb(NO3)2",
         "Msol": 331.2128,
-        "M": 207.2
+        "M": 207.2,
+        "precoM":0.027,
+        "precoS": 0.088
        },
 
     "6":{
         "nome": "Li",
         "id": 6,
-        "semireacao":"Li+ -> Li",
         "eletrons": 1,
         "E":-3.04,
         "solucao": "LiCl",
         "Msol": 42.394,
-        "M": 6.941
+        "M": 6.941,
+        "precoM": 0.222,
+        "precoS": 0.539
     },
 
     "7":{
         "nome": "Mg",
         "id": 7,
-        "semireacao":"Mg2+ -> Mg",
         "eletrons": 2,
         "E":-2.37,
         "solucao": "MgSO4",
         "Msol": 120.3696,
-        "M": 24.305      
+        "M": 24.305,
+        "precoM": 0.140,
+        "precoS": 0.005     
     },
     "8":{
         "nome": "Al",
         "id": 8,
-        "semireacao":"Al3+ -> Al",
         "eletrons": 3,
         "E":-1.68,
         "solucao": "AlCl3",
         "Msol": 133.3405,
-        "M": 26.9815
+        "M": 26.9815,
+        "precoM": 0.0125,
+        "precoS": 0.224
     },
 
     "9":{
         "nome": "Ag",
         "id": 9,
-        "semireacao":"Ag+ -> Ag",
         "eletrons": 1,
         "E":0.80,
         "solucao": "AgCl",
         "Msol": 143.3212,
-        "M": 107.8682
+        "M": 107.8682,
+        "precoM": 4.68,
+        "precoS": 18.960
         },
+
     "10":{
         "nome": "Fe3",
         "id": 10,
-        "semireacao":"Fe3+ -> Fe",
         "eletrons": 3,
         "E":-0.04,
         "solucao": "FeCl3",
         "Msol": 162.204,
-        "M": 55.845
-    }
+        "M": 55.845,
+        "precoM": 0.00035,
+        "precoS": 0.0285
+    },
+    "11": {
+        "nome": "Cr",
+        "id" : 11,
+        "eletrons": 3,
+        "E": -0.744,
+        "solucao": "Cr(NO3)3",
+        "Msol": 238.011,
+        "M": 51.9961,
+        "precoM": 0.6,
+        "precoS": 1.148
+    },
+    "12": {
+        "nome": "Mn",
+        "id": 12,
+        "eletrons": 2,
+        "E": -1.185,
+        "solucao": "MnSO4",
+        "Msol": 151,
+        "M": 54.938045,
+        "precoM": 1.2,
+        "precoS": 0.036
+      }
 
 }

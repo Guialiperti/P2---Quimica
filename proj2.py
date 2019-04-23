@@ -11,10 +11,14 @@ class BuildBattery():
         self.concen1 = concen1
         self.concen2 = concen2
         self.temp = temp
-
+        
+        self.total_mass = self.total_massCalc()
         self.ddp = self.ddpCalc()
         self.c_capacity = self.charge_capacity()
+        self.e_density = self.e_densityCacl()
+        self.c_capacity_density = self.c_densityCacl()
         self.potency = self.potencyCalc()
+        self.total_price = self.priceCalc()
 
     def ddpCalc_primary(self):
         e1 = self.metal1["E"]
@@ -66,6 +70,24 @@ class BuildBattery():
         pot = self.ddp * self.c_capacity
         return pot / 1000
 
+    def total_massCalc(self):
+        total = self.mass1 + self.mass2 + 200
+        return total
+
+    def c_densityCacl(self):
+
+        return self.c_capacity / self.total_mass
+
+    def e_densityCacl(self):
+        temp = self.ddp * self.c_capacity
+        return temp / self.total_mass
+
+    def priceCalc(self):
+        
+        return (self.metal1["precoM"] * self.mass1) + (self.metal2["precoM"] * self.mass2) + (self.metal1["precoS"] * self.concen1 * self.metal1["Msol"]) + (self.metal2["precoS"] * self.concen2 * self.metal2["Msol"])
+
+
+
 class ChooseBattery():
     def __init__(self, ddp, pot, time, c_capacity):
         self.ddp = ddp
@@ -83,7 +105,6 @@ class ChooseBattery():
         for battery in battery_list:
             q_serie = 1
             q_paralel = 1
-            q_tempo = 1
 
             ddp_atual = q_serie * battery_list[battery]["ddp"]
             while ddp_atual < self.ddp:
@@ -92,8 +113,10 @@ class ChooseBattery():
             
             corrente = self.pot / (battery_list[battery]["ddp"] * q_serie)
             current_time = battery_list[battery]["cap_carga"] / corrente 
-            while current_time < self.time:
+            c_cap = battery_list[battery]["cap_carga"] * q_paralel
+            while current_time < self.time and c_cap > self.c_capacity :
                 q_paralel += 1
+                c_cap = battery_list[battery]["cap_carga"] * q_paralel
                 current_time = (battery_list[battery]["cap_carga"] * q_paralel) / corrente
 
             price = (q_serie + q_paralel) * battery_list[battery]["preco"]
@@ -150,20 +173,21 @@ def battery_assemble(material_list):
     battery = BuildBattery(metal1, metal2, metal_1_mass, metal_2_mass, metal_1_concen, metal_2_concen, temp)
     
     print("De acordo com as configurações escolhidas essa seria sua bateria:")
-    print("DDP: {0}".format(battery.ddp))
-    print("Corrente: {0} mA".format(2 * battery.c_capacity))
-    print("Capacidade de carga: {0} mAh".format(battery.c_capacity))
-    print("Potência: {0} mW/h".format(battery.potency))
+    print("DDP: {0} V".format(battery.ddp))
+    print("Capacidade de carga: {0} mA/h".format(battery.c_capacity))
+    print("Densidade de carga: {0} mA/hg".format(battery.c_capacity_density))
+    print("Densidade energética: {0} Wh/g".format(battery.e_density))
+    print("Preço da pilha montada: R$ {0}".format(battery.total_price))
     print("--------------------------------------------------")
 
 
 def sort_battery(comercial_list):
     print("------------------------------")
     print("Inpute as configurações desejadas\n")
-    ddp = int(input("DDP em Volts: "))
-    pot = int(input("Potência em W/h: "))
-    time = int(input("Tempo de utilização em horas: "))
-    c_capacity = int(input("Capacidade de carga em Ah: "))
+    ddp = float(input("DDP em Volts: "))
+    pot = float(input("Potência em W: "))
+    time = float(input("Tempo de utilização em horas: "))
+    c_capacity = float(input("Capacidade de carga em Ah: "))
     for i in range(30):
        print("Computando....")
     print("-----------------------------------------")
@@ -172,7 +196,6 @@ def sort_battery(comercial_list):
 
     print("--------------------------------------")
     print("A bateria mais barata que atende as suas necessidade é: {0}".format(model))
-    print("Corrente máxima da bateria: {0} mA".format(max_current))
     print("A configuração de {0} células em série e {1} células em paralelo".format(serie, paralel))
     print("Total de pilhas utilizado: {0}".format(paralel + serie))
     print("Custo total da bateria: R$ {0}".format(price))

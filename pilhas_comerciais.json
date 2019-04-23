@@ -32,15 +32,14 @@
     "6":{
         "nome": "Duracell Alkaline MN1300",
         "ddp": 1.5,
-        "cap_carga":15000,
+        "cap_carga":1.5,
         "preco": 67.50
     },
     "7":{
         "nome": "Duracell Alkaline MN1604",
         "ddp": 9,
-        "cap_carga":580,
+        "cap_carga":0.580,
         "preco": 105
     }
-
 
 }
