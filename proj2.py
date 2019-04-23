@@ -11,6 +11,7 @@ class BuildBattery():
         self.concen1 = concen1
         self.concen2 = concen2
         self.temp = temp
+
         self.ddp = self.ddpCalc()
         self.c_capacity = self.charge_capacity()
         self.potency = self.potencyCalc()
@@ -48,7 +49,7 @@ class BuildBattery():
         
         e_mol = (metal["eletrons"] * limit * other["eletrons"]) / metal["M"]
 
-        charge = faraday * e_mol / 3600 #CONFIRMAR SE É ISSO MESMO!!!!!!!!!!!!
+        charge = faraday * e_mol / 3600 
         return charge
     
     def ddpCalc(self):
@@ -134,11 +135,11 @@ def battery_assemble(material_list):
     metal_1_id = int(input("\nMetal 1: "))
     metal_2_id = int(input("\nMetal 2: "))
     print("Agora digite a massa de cada um dos materias")
-    metal_1_mass = int(input("Massa do primeiro metal em gramas: "))
-    metal_2_mass = int(input("Massa do segundo metal em gramas: "))
+    metal_1_mass = float(input("Massa do primeiro metal em gramas: "))
+    metal_2_mass = float(input("Massa do segundo metal em gramas: "))
     print("Digite a concentração da solução de cada metal ")
-    metal_1_concen = int(input("Concentração do primeiro metal em mol/L: "))
-    metal_2_concen = int(input("Concentração do segundo metal em mol/L: "))
+    metal_1_concen = float(input("Concentração do primeiro metal em mol/L: "))
+    metal_2_concen = float(input("Concentração do segundo metal em mol/L: "))
     print("Para finalizar, digite a temperatura da pilha")
     temp = int(input("Temperatura em Celsius: "))
     for i in range(30):
@@ -152,7 +153,7 @@ def battery_assemble(material_list):
     print("DDP: {0}".format(battery.ddp))
     print("Corrente: {0} mA".format(2 * battery.c_capacity))
     print("Capacidade de carga: {0} mAh".format(battery.c_capacity))
-    print("Potência: {0} W/h".format(battery.potency))
+    print("Potência: {0} mW/h".format(battery.potency))
     print("--------------------------------------------------")
 
 
