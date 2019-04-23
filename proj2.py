@@ -93,7 +93,7 @@ class ChooseBattery():
             current_time = battery_list[battery]["cap_carga"] / corrente 
             while current_time < self.time:
                 q_paralel += 1
-                current_time = (battery_list[battery]["cap_carga"] * 2) / corrente
+                current_time = (battery_list[battery]["cap_carga"] * q_paralel) / corrente
 
             price = (q_serie + q_paralel) * battery_list[battery]["preco"]
 
@@ -119,7 +119,7 @@ def choose_option():
     print("Primeiro escolha uma opção:")
     print("Digite 0 para montar uma pilha com suas configurações")
     print("Digite 1 para encontrarmos uma pilha com as melhores configurações para sua aplicação")
-    user_choice = input("Opção escolhida:")
+    user_choice = int(input("Opção escolhida:"))
     return user_choice
 
 
@@ -130,6 +130,7 @@ def battery_assemble(material_list):
     for material in material_list:
         print("{0} : {1}".format(material_list[material]["id"], material_list[material]["nome"]))
     print("--------------------------------------------------")
+    print("Digite o ID dos metais escolhidos")
     metal_1_id = int(input("\nMetal 1: "))
     metal_2_id = int(input("\nMetal 2: "))
     print("Agora digite a massa de cada um dos materias")
