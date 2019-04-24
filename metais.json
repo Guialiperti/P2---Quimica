@@ -1,140 +1,140 @@
 {
-    "1":{
-        "nome": "Zn",
+    "1": {
+        "name": "Zn",
         "id": 1,
         "eletrons": 2,
-        "E":-0.763,
-        "solucao": "ZnSO4",
-        "Msol": 161.4446,
+        "E": -0.763,
+        "compound": "ZnSO4",
+        "molMass": 161.4446,
         "M": 65.38,
-        "precoM": 0.160,
-        "precoS": 0.160
-        }, 
-    "2":{
-        "nome" : "Hg",
+        "priceM": 0.160,
+        "priceS": 0.160
+    },
+    "2": {
+        "name": "Hg",
         "id": 2,
         "eletrons": 2,
         "E": 0.851,
-        "solucao": "Hg(NO3)2",
-        "Msol": 100,
+        "compound": "Hg(NO3)2",
+        "molMass": 100,
         "M": 200.59,
-        "precoM": 2.0,
-        "precoS": 16.6544
-      },
-    "3":{
-        "nome": "Cu",
+        "priceM": 2.0,
+        "priceS": 16.6544
+    },
+    "3": {
+        "name": "Cu",
         "id": 3,
         "eletrons": 2,
-        "E":0.34,
-        "solucao": "CuSO4",
-        "Msol": 159.6106,
+        "E": 0.34,
+        "compound": "CuSO4",
+        "molMass": 159.6106,
         "M": 63.546,
-        "precoM":0.018,
-        "precoS":0.020
+        "priceM": 0.018,
+        "priceS": 0.020
     },
-    "4":{
-        "nome": "Ni",
+    "4": {
+        "name": "Ni",
         "id": 4,
         "eletrons": 2,
-        "E":-0.23,
-        "solucao": "NiSO4",
-        "Msol": 154.758,
+        "E": -0.23,
+        "compound": "NiSO4",
+        "molMass": 154.758,
         "M": 58.6934,
-        "precoM": 0.395,
-        "precoS": 0.049
-        },
+        "priceM": 0.395,
+        "priceS": 0.049
+    },
 
-    "5":{
-        "nome": "Pb",
+    "5": {
+        "name": "Pb",
         "id": 5,
         "eletrons": 2,
-        "E":-0.13,
-        "solucao": "Pb(NO3)2",
-        "Msol": 331.2128,
+        "E": -0.13,
+        "compound": "Pb(NO3)2",
+        "molMass": 331.2128,
         "M": 207.2,
-        "precoM":0.027,
-        "precoS": 0.088
-       },
+        "priceM": 0.027,
+        "priceS": 0.088
+    },
 
-    "6":{
-        "nome": "Li",
+    "6": {
+        "name": "Li",
         "id": 6,
         "eletrons": 1,
-        "E":-3.04,
-        "solucao": "LiCl",
-        "Msol": 42.394,
+        "E": -3.04,
+        "compound": "LiCl",
+        "molMass": 42.394,
         "M": 6.941,
-        "precoM": 0.222,
-        "precoS": 0.539
+        "priceM": 0.222,
+        "priceS": 0.539
     },
 
-    "7":{
-        "nome": "Mg",
+    "7": {
+        "name": "Mg",
         "id": 7,
         "eletrons": 2,
-        "E":-2.37,
-        "solucao": "MgSO4",
-        "Msol": 120.3696,
+        "E": -2.37,
+        "compound": "MgSO4",
+        "molMass": 120.3696,
         "M": 24.305,
-        "precoM": 0.140,
-        "precoS": 0.005     
+        "priceM": 0.140,
+        "priceS": 0.005
     },
-    "8":{
-        "nome": "Al",
+    "8": {
+        "name": "Al",
         "id": 8,
         "eletrons": 3,
-        "E":-1.68,
-        "solucao": "AlCl3",
-        "Msol": 133.3405,
+        "E": -1.68,
+        "compound": "AlCl3",
+        "molMass": 133.3405,
         "M": 26.9815,
-        "precoM": 0.0125,
-        "precoS": 0.224
+        "priceM": 0.0125,
+        "priceS": 0.224
     },
 
-    "9":{
-        "nome": "Ag",
+    "9": {
+        "name": "Ag",
         "id": 9,
         "eletrons": 1,
-        "E":0.80,
-        "solucao": "AgCl",
-        "Msol": 143.3212,
+        "E": 0.80,
+        "compound": "AgCl",
+        "molMass": 143.3212,
         "M": 107.8682,
-        "precoM": 4.68,
-        "precoS": 18.960
-        },
+        "priceM": 4.68,
+        "priceS": 18.960
+    },
 
-    "10":{
-        "nome": "Fe3",
+    "10": {
+        "name": "Fe3",
         "id": 10,
         "eletrons": 3,
-        "E":-0.04,
-        "solucao": "FeCl3",
-        "Msol": 162.204,
+        "E": -0.04,
+        "compound": "FeCl3",
+        "molMass": 162.204,
         "M": 55.845,
-        "precoM": 0.00035,
-        "precoS": 0.0285
+        "priceM": 0.00035,
+        "priceS": 0.0285
     },
     "11": {
-        "nome": "Cr",
-        "id" : 11,
+        "name": "Cr",
+        "id": 11,
         "eletrons": 3,
         "E": -0.744,
-        "solucao": "Cr(NO3)3",
-        "Msol": 238.011,
+        "compound": "Cr(NO3)3",
+        "molMass": 238.011,
         "M": 51.9961,
-        "precoM": 0.6,
-        "precoS": 1.148
+        "priceM": 0.6,
+        "priceS": 1.148
     },
     "12": {
-        "nome": "Mn",
+        "name": "Mn",
         "id": 12,
         "eletrons": 2,
         "E": -1.185,
-        "solucao": "MnSO4",
-        "Msol": 151,
+        "compound": "MnSO4",
+        "molMass": 151,
         "M": 54.938045,
-        "precoM": 1.2,
-        "precoS": 0.036
-      }
+        "priceM": 1.2,
+        "priceS": 0.036
+    }
 
 }

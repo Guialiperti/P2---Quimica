@@ -2,6 +2,7 @@ import math
 import json
 import sys
 
+
 class BuildBattery():
     def __init__(self, metal1, metal2, mass1, mass2, concen1, concen2, temp):
         self.metal1 = metal1
@@ -11,7 +12,7 @@ class BuildBattery():
         self.concen1 = concen1
         self.concen2 = concen2
         self.temp = temp
-        
+
         self.total_mass = self.total_massCalc()
         self.ddp = self.ddpCalc()
         self.c_capacity = self.charge_capacity()
@@ -35,7 +36,7 @@ class BuildBattery():
             anode = self.metal2
             cathode_sol = self.concen1
             anode_sol = self.concen2
-        
+
         return e0, cathode, anode, cathode_sol, anode_sol
 
     def charge_capacity(self):
@@ -50,12 +51,12 @@ class BuildBattery():
             limit = self.mass2
             metal = self.metal2
             other = self.metal1
-        
+
         e_mol = (metal["eletrons"] * limit * other["eletrons"]) / metal["M"]
 
-        charge = faraday * e_mol / 3600 
+        charge = faraday * e_mol / 3600
         return charge
-    
+
     def ddpCalc(self):
         self.temp += 273
         r = 8.314
@@ -83,9 +84,8 @@ class BuildBattery():
         return temp / self.total_mass
 
     def priceCalc(self):
-        
-        return (self.metal1["precoM"] * self.mass1) + (self.metal2["precoM"] * self.mass2) + (self.metal1["precoS"] * self.concen1 * self.metal1["Msol"]) + (self.metal2["precoS"] * self.concen2 * self.metal2["Msol"])
 
+        return (self.metal1["priceM"] * self.mass1) + (self.metal2["priceM"] * self.mass2) + (self.metal1["priceS"] * self.concen1 * self.metal1["molMass"]) + (self.metal2["priceS"] * self.concen2 * self.metal2["molMass"])
 
 
 class ChooseBattery():
@@ -110,29 +110,30 @@ class ChooseBattery():
             while ddp_atual < self.ddp:
                 q_serie += 1
                 ddp_atual = q_serie * battery_list[battery]["ddp"]
-            
-            corrente = self.pot / (battery_list[battery]["ddp"] * q_serie)
-            current_time = battery_list[battery]["cap_carga"] / corrente 
-            c_cap = battery_list[battery]["cap_carga"] * q_paralel
-            while current_time < self.time and c_cap > self.c_capacity :
-                q_paralel += 1
-                c_cap = battery_list[battery]["cap_carga"] * q_paralel
-                current_time = (battery_list[battery]["cap_carga"] * q_paralel) / corrente
 
-            price = (q_serie + q_paralel) * battery_list[battery]["preco"]
+            corrente = self.pot / (battery_list[battery]["ddp"] * q_serie)
+            current_time = battery_list[battery]["charge"] / corrente
+            c_cap = battery_list[battery]["charge"] * q_paralel
+            while current_time < self.time and c_cap > self.c_capacity:
+                q_paralel += 1
+                c_cap = battery_list[battery]["charge"] * q_paralel
+                current_time = (
+                    battery_list[battery]["charge"] * q_paralel) / corrente
+
+            price = (q_serie + q_paralel) * battery_list[battery]["price"]
 
             price_list.append(price)
-            model_list.append(battery_list[battery]["nome"])
+            model_list.append(battery_list[battery]["name"])
             serie_list.append(q_serie)
             paralel_list.append(q_paralel)
-            max_current_list.append(2 * battery_list[battery]["cap_carga"] * q_paralel)
+            max_current_list.append(
+                2 * battery_list[battery]["charge"] * q_paralel)
 
         min_price = min(price_list)
         index = price_list.index(min_price)
 
         return model_list[index], max_current_list[index], serie_list[index], paralel_list[index], price_list[index]
 
-        
 
 def choose_option():
     print("--------------------------------------------------")
@@ -152,7 +153,8 @@ def battery_assemble(material_list):
     print("Escolha 2 metais a partir da lista abaixo\n")
     print("ID | Metal")
     for material in material_list:
-        print("{0} : {1}".format(material_list[material]["id"], material_list[material]["nome"]))
+        print("{0} : {1}".format(
+            material_list[material]["id"], material_list[material]["name"]))
     print("--------------------------------------------------")
     print("Digite o ID dos metais escolhidos")
     metal_1_id = int(input("\nMetal 1: "))
@@ -170,8 +172,9 @@ def battery_assemble(material_list):
     print("--------------------------------------------------")
     metal1 = material_list[str(metal_1_id)]
     metal2 = material_list[str(metal_2_id)]
-    battery = BuildBattery(metal1, metal2, metal_1_mass, metal_2_mass, metal_1_concen, metal_2_concen, temp)
-    
+    battery = BuildBattery(metal1, metal2, metal_1_mass,
+                           metal_2_mass, metal_1_concen, metal_2_concen, temp)
+
     print("De acordo com as configurações escolhidas essa seria sua bateria:")
     print("DDP: {0} V".format(battery.ddp))
     print("Capacidade de carga: {0} mA/h".format(battery.c_capacity))
@@ -189,19 +192,19 @@ def sort_battery(comercial_list):
     time = float(input("Tempo de utilização em horas: "))
     c_capacity = float(input("Capacidade de carga em Ah: "))
     for i in range(30):
-       print("Computando....")
+        print("Computando....")
     print("-----------------------------------------")
     escolha = ChooseBattery(ddp, pot, time, c_capacity)
     model, max_current, serie, paralel, price = escolha.sort(comercial_list)
 
     print("--------------------------------------")
-    print("A bateria mais barata que atende as suas necessidade é: {0}".format(model))
-    print("A configuração de {0} células em série e {1} células em paralelo".format(serie, paralel))
+    print(
+        "A bateria mais barata que atende as suas necessidade é: {0}".format(model))
+    print("A configuração de {0} células em série e {1} células em paralelo".format(
+        serie, paralel))
     print("Total de pilhas utilizado: {0}".format(paralel + serie))
     print("Custo total da bateria: R$ {0}".format(price))
     print("---------------------------------------")
-    
-    
 
 
 with open("metais.json", "r") as fp:
